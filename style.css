@@ -110,6 +110,53 @@
     0 25px 50px -12px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(255, 255, 255, 0.2);
 } /* 3D COVERFLOW & CYBER GATEWAY STYLES - CRISP RENDERING */
+.flag-globe {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  isolation: isolate;
+  background: #07111f;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.55);
+}
+.flag-globe::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 300%;
+  background-image: var(--flag-image);
+  background-repeat: repeat-x;
+  background-size: 50% 100%;
+  animation: flagGlobeRotate 6s linear infinite;
+}
+.flag-globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      ellipse at 32% 24%,
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.12) 24%,
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 44%,
+      rgba(0, 0, 0, 0.18) 68%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+  box-shadow: inset 0 0 7px rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+@keyframes flagGlobeRotate {
+  to {
+    transform: translateX(-50%);
+  }
+}
 .coverflow-container {
   height: 420px;
   display: flex;
